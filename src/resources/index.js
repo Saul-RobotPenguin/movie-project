@@ -1,17 +1,20 @@
 import axios from 'axios'
 
-let genres = {
+const fetch = require('node-fetch');
+
+const url = 'https://api.themoviedb.org/3/trending/all/day?language=en-US';
+const genres = {
   method: 'GET',
-  redirect: 'follow',
   headers: {
-    "apikey": `${process.env.REACT_APP_API_KEY}`
+    accept: 'application/json',
+    Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
   }
 };
 
-fetch("https://api.apilayer.com/unogs/static/genres", genres)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+fetch(url, genres)
+  .then(res => res.json())
+  .then(json => console.log(json))
+  .catch(err => console.error('error:' + err));
 
 export {
     genres

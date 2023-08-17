@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 //   const options = {
 //     method: 'GET',
@@ -8,7 +8,7 @@ import axios from 'axios'
 //       'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
 //     }
 //   };
-  
+
 //   try {
 //       const response = await axios.request(options);
 //       console.log(response.data);
@@ -16,19 +16,17 @@ import axios from 'axios'
 //       console.error(error);
 //   }
 var myHeaders = new Headers();
-myHeaders.append("apikey", "kUcq1Xqq8CAJ8FNm2QzQe8PopG0ChPgx");
+myHeaders.append("apikey", process.env.REACT_APP_API_KEY);
 
 let genres = {
-  method: 'GET',
-  redirect: 'follow',
-  headers: myHeaders
+  method: "GET",
+  redirect: "follow",
+  headers: myHeaders,
 };
 
 fetch("https://api.apilayer.com/unogs/static/genres", genres)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.log("error", error));
 
-export {
-    genres
-}
+export { genres };

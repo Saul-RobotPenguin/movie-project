@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 const fetch = require('node-fetch');
 
@@ -16,6 +16,4 @@ fetch(url, genres)
   .then(json => console.log(json))
   .catch(err => console.error('error:' + err));
 
-export {
-    genres
-}
+export { genres };

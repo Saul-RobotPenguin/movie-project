@@ -6,8 +6,10 @@ const HomePage = () => {
     console.log(genres)
 
 return (
-    <div>
-
+    <div className='Trending'>
+        <div>
+            
+        </div>
     </div>
 )
 }

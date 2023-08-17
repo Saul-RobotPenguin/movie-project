@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { options } from '../resources/index'
+import { genres } from '../resources/index'
 
 
 const HomePage = () => {
-    const [options, setOptions] = useState([])
-
-    useEffect(() =>{
-        options(setOptions)
-        console.log(options)
-    })
+    console.log(genres)
 
 return (
     <div>
@@ -16,3 +11,5 @@ return (
     </div>
 )
 }
+
+export default HomePage

@@ -1,23 +1,34 @@
 import axios from 'axios'
 
-const axios = require('axios');
+//   const options = {
+//     method: 'GET',
+//     url: 'https://unogs-unogs-v1.p.rapidapi.com/static/genres',
+//     headers: {
+//       'X-RapidAPI-Key': 'kUcq1Xqq8CAJ8FNm2QzQe8PopG0ChPgx',
+//       'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
+//     }
+//   };
+  
+//   try {
+//       const response = await axios.request(options);
+//       console.log(response.data);
+//   } catch (error) {
+//       console.error(error);
+//   }
+var myHeaders = new Headers();
+myHeaders.append("apikey", "kUcq1Xqq8CAJ8FNm2QzQe8PopG0ChPgx");
 
-const options = {
+let genres = {
   method: 'GET',
-  url: 'https://unogs-unogs-v1.p.rapidapi.com/search/titles',
-  params: {
-    order_by: 'date',
-    type: 'movie'
-  },
-  headers: {
-    'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
-    'X-RapidAPI-Host': 'unogs-unogs-v1.p.rapidapi.com'
-  }
+  redirect: 'follow',
+  headers: myHeaders
 };
 
-try {
-	const response = await axios.request(options);
-	console.log(response.data);
-} catch (error) {
-	console.error(error);
+fetch("https://api.apilayer.com/unogs/static/genres", genres)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+export {
+    genres
 }

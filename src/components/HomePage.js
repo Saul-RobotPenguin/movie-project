@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { genres } from "../resources/index";
-import Movies from "./Movies";
+import MovieCard from "./MovieCard";
+import MovieNavbar from "./MovieNavbar";
 
 const HomePage = () => {
   console.log(genres);
 
   return (
     <div>
-      <Movies />
+      <MovieNavbar />
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+      </div>
     </div>
   );
 };

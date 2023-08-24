@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { genres } from "../resources/index";
+import { getMovies } from "../resources/index";
 import MovieCard from "./MovieCard";
 import MovieNavbar from "./MovieNavbar";
+import Movies from "./Movies";
 
 const HomePage = () => {
-  console.log(genres);
+  const [popularMovies, setPopularMovies] = useState([])
+
+  useEffect(() => {
+    getMovies(setPopularMovies)
+  }, [])
+
+  console.log(popularMovies, 'hello')
 
   return (
     <div>
+      <Movies />
       <MovieNavbar />
       <div
         style={{

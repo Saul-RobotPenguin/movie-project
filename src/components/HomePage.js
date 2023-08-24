@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getMovies } from "../resources/index";
 import MovieCard from "./MovieCard";
 import MovieNavbar from "./MovieNavbar";
-import Movies from "./Movies";
+// import Movies from "./Movies";
 
 const HomePage = () => {
   const [popularMovies, setPopularMovies] = useState([])
@@ -15,7 +15,6 @@ const HomePage = () => {
 
   return (
     <div>
-      <Movies />
       <MovieNavbar />
       <div
         style={{
@@ -25,18 +24,7 @@ const HomePage = () => {
           alignItems: "center",
           justifyContent: "center",
         }}>
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        <MovieCard popularMovies={popularMovies}/>
       </div>
     </div>
   );

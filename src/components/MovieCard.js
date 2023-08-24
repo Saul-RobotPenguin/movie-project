@@ -16,10 +16,10 @@ const divStyles = css`
   width: 18rem;
 `;
 
-const Movies = () => {
-  return (
-    <>
-      <div css={divStyles}>
+const Movies = ({popularMovies}) => {
+  let movieList = popularMovies
+  ? popularMovies.map((movie) => (
+    <div css={divStyles}>
         <div
           className="flip-card"
           style={{ marginRight: "4rem", marginBottom: "300px" }}>
@@ -29,10 +29,11 @@ const Movies = () => {
                 <Card style={{ width: "18rem" }}>
                   <Card.Img
                     variant="top"
-                    src="https://www.barbie-themovie.com/images/gallery/img1.jpg"
+                    src={`
+                    https://image.tmdb.org/t/p/original`+movie.backdrop_path}
                   />
                   <Card.Body>
-                    <Card.Title>Barbie (2023)</Card.Title>
+                    <Card.Title>{movie.name || movie.title}</Card.Title>
                     <Button variant="primary">Hover method</Button>
                   </Card.Body>
                 </Card>
@@ -41,23 +42,63 @@ const Movies = () => {
             <div className="flip-card-back">
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
-                  <Card.Title>About Barbie (2023)</Card.Title>
-                  <Card.Text>Year : 2023</Card.Text>
+                  <Card.Title>About {movie.name || movie.title}</Card.Title>
+                  <Card.Text>Year : {movie.first_air_date || movie.release_date}</Card.Text>
                   <Card.Text>
-                    Synopsis : The film sees Margot Robbie's incarnation of the
-                    famous Mattel doll travel from "Barbieland" to the real
-                    world after experiencing thoughts of death and cellulite.
-                    There, she discovers that the human world is very different
-                    from her own and begins to question everything she knows.
+                  {movie.overview} 
                   </Card.Text>
-                  <Card.Text>Ratings : 4.9 </Card.Text>
+                  <Card.Text>Ratings : {movie.vote_average} </Card.Text>
                 </Card.Body>
               </Card>
             </div>
           </div>
         </div>
       </div>
-    </>
+  )) : null
+  return (
+    <div>
+      {movieList}
+    </div>
+    // <>
+    //   <div css={divStyles}>
+    //     <div
+    //       className="flip-card"
+    //       style={{ marginRight: "4rem", marginBottom: "300px" }}>
+    //       <div className="flip-card-inner">
+    //         <div className="flip-card-front">
+    //           <div style={mystyle}>
+    //             <Card style={{ width: "18rem" }}>
+    //               <Card.Img
+    //                 variant="top"
+    //                 src="https://www.barbie-themovie.com/images/gallery/img1.jpg"
+    //               />
+    //               <Card.Body>
+    //                 <Card.Title>Barbie (2023)</Card.Title>
+    //                 <Button variant="primary">Hover method</Button>
+    //               </Card.Body>
+    //             </Card>
+    //           </div>
+    //         </div>
+    //         <div className="flip-card-back">
+    //           <Card style={{ width: "18rem" }}>
+    //             <Card.Body>
+    //               <Card.Title>About Barbie (2023)</Card.Title>
+    //               <Card.Text>Year : 2023</Card.Text>
+    //               <Card.Text>
+    //                 Synopsis : The film sees Margot Robbie's incarnation of the
+    //                 famous Mattel doll travel from "Barbieland" to the real
+    //                 world after experiencing thoughts of death and cellulite.
+    //                 There, she discovers that the human world is very different
+    //                 from her own and begins to question everything she knows.
+    //               </Card.Text>
+    //               <Card.Text>Ratings : 4.9 </Card.Text>
+    //             </Card.Body>
+    //           </Card>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </>
   );
 };
 

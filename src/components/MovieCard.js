@@ -22,7 +22,7 @@ const Movies = ({ popularMovies }) => {
         <div css={divStyles}>
           <div
             className="flip-card"
-            style={{ marginRight: "4rem", marginBottom: "225px" }}>
+            style={{ marginRight: "4rem", marginBottom: "400px" }}>
             <div className="flip-card-inner">
               <div className="flip-card-front">
                 <div style={mystyle}>
@@ -45,6 +45,16 @@ const Movies = ({ popularMovies }) => {
               </div>
               <div className="flip-card-back">
                 <Card style={{ width: "18rem" }}>
+                  <Card.Img
+                    variant="top"
+                    src={
+                      movie.backdrop_path
+                        ? `
+                    https://image.tmdb.org/t/p/original` + movie.backdrop_path
+                        : `
+                    https://image.tmdb.org/t/p/original` + movie.poster_path
+                    }
+                  />
                   <Card.Body>
                     <Card.Title>About {movie.name || movie.title}</Card.Title>
                     <Card.Text>

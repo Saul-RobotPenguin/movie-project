@@ -1,11 +1,12 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import {MovieCard} from './MovieCard'
+import { useState} from 'react'
+import Movies from './MovieCard'
+import MovieNavbar from './MovieNavbar'
 import axios from 'axios'
 
 const SearchPage = () => {
   const [search, setSearch] = useState('')
-  const [movies, setMovies] = useState('')
+  const [popularMovies, setPopularMovies] = useState('')
   
   const onChange = (e) => {
     setSearch(e.target.value)
@@ -13,24 +14,29 @@ const SearchPage = () => {
 
   const Search = async (e) => {
     e.preventDefault()
-    const { data } = await axios.get('https://api.themoviedb.org/3/search/keyword', {
+    const { data } = await axios.get('https://api.themoviedb.org/3/search/movie', {
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
       },
       params: {
         query: search,
-        page: 1
+        page: 1,
+        limit: 5
       }
     })
-    setMovies(data)
+    console.log(data.results)
+    setPopularMovies(data.results)
+    setSearch('')
   }
 
 
   return(
     <div>
+        <MovieNavbar />
         <div>
-            <form className="searchform" onSubmit={Search}>
+            <h1>Search Page</h1>
+         <form className="searchform" onSubmit={Search}>
           <input
             className="searchinput"
             type="text"
@@ -38,11 +44,11 @@ const SearchPage = () => {
             value={search}
             placeholder="Search"
             onChange={onChange}
-          >search</input>
+          />
           <button className="searchbutton" type="submit"></button>
         </form>
         <div>
-            <MovieCard movies={popularMovies}/>
+            <Movies popularMovies={popularMovies}/>
         </div>
         </div>
     </div>

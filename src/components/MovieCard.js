@@ -29,8 +29,9 @@ const Movies = ({popularMovies}) => {
                 <Card style={{ width: "18rem" }}>
                   <Card.Img
                     variant="top"
-                    src={`
-                    https://image.tmdb.org/t/p/original`+movie.backdrop_path}
+                    src={ movie.backdrop_path ? `
+                    https://image.tmdb.org/t/p/original`+movie.backdrop_path : `
+                    https://image.tmdb.org/t/p/original`+movie.poster_path}
                   />
                   <Card.Body>
                     <Card.Title>{movie.name || movie.title}</Card.Title>

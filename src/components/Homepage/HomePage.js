@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getMovies } from "../resources/index";
-import MovieCard from "./MovieCard";
-import MovieNavbar from "./MovieNavbar";
+import { getMovies } from "../../resources/index";
+import MovieCard from "../Cards/MovieCard";
+import MovieNavbar from "../Navbar/MovieNavbar";
 // import Movies from "./Movies";
 
 const HomePage = () => {
@@ -10,8 +10,6 @@ const HomePage = () => {
   useEffect(() => {
     getMovies(setPopularMovies);
   }, []);
-
-  console.log(popularMovies, "hello");
 
   return (
     <div>

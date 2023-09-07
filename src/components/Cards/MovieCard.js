@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { css } from "@emotion/react";
 
-import "./Movies.css";
+import "../Movies.css";
 
 const mystyle = {
   width: "300px",
@@ -18,8 +18,8 @@ const divStyles = css`
 
 const Movies = ({ popularMovies }) => {
   let movieList = popularMovies
-    ? popularMovies.map((movie) => (
-        <div css={divStyles}>
+    ? popularMovies.map((movie, i) => (
+        <div key={i} data-testid="Card" css={divStyles}>
           <div
             className="flip-card"
             style={{ marginRight: "4rem", marginBottom: "400px" }}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Movies from "./MovieCard";
-import MovieNavbar from "./MovieNavbar";
+import Movies from "../Cards/MovieCard";
+import MovieNavbar from "../Navbar/MovieNavbar";
 import axios from "axios";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
@@ -29,7 +29,6 @@ const SearchPage = () => {
         },
       }
     );
-    console.log(data.results);
     setPopularMovies(data.results);
     setSearch("");
   };
@@ -49,7 +48,7 @@ const SearchPage = () => {
         </h1>
 
         <br />
-        <Container className="mt-5 mb-5">
+        <Container className="mt-5 mb-5" data-testid="SearchBar">
           <Row>
             <Col md={{ span: 4, offset: 4 }}>
               <Form className="d-flex searchform" onSubmit={Search}>
@@ -62,7 +61,10 @@ const SearchPage = () => {
                   onChange={onChange}
                   aria-label="Search"
                 />
-                <Button className="searchbutton" type="submit">
+                <Button
+                  data-testid="SearchButton"
+                  className="searchbutton"
+                  type="submit">
                   Search
                 </Button>
               </Form>

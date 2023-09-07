@@ -6,9 +6,12 @@ import { NavLink } from "react-router-dom";
 const MovieNavbar = () => {
   return (
     <>
-      <Navbar className="bg-body-tertiary " data-bs-theme="dark">
+      <Navbar
+        data-testid="Navbar"
+        className="bg-body-tertiary "
+        data-bs-theme="dark">
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand data-testid="Movie">
             <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
               <img
                 alt=""
@@ -20,7 +23,7 @@ const MovieNavbar = () => {
               Movie Website
             </NavLink>
           </Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav data-testid="Search" className="me-auto">
             <Nav.Link href="/search">Search</Nav.Link>
           </Nav>
         </Container>
